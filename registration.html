@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title >Registration Form</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    #myForm {
+      background-color: #fff;
+      display: inline-block;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .nameerror, .emailerror, .numbererror {
+      color: red;
+      display: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Registration Form</h1>
+
+  <form id="myForm">
+    <input type="text" placeholder="Enter your name" id="name">
+    <span class="nameerror">Don't give space between words</span><br>
+
+    <input type="text" placeholder="Enter your email" id="email">
+    <span class="emailerror">Enter your correct Gmail address</span><br>
+
+    <input type="text" placeholder="Enter your number" id="number">
+    <span class="numbererror">Enter 10-digit phone number</span><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    const form = document.getElementById("myForm");
+
+    const nameRegex = /^[a-zA-Z]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    const numberRegex = /^\d{10}$/;
+
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const number = document.getElementById("number");
+
+    const nameError = document.querySelector(".nameerror");
+    const emailError = document.querySelector(".emailerror");
+    const numberError = document.querySelector(".numbererror");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+
+
+        var validate = true
+
+        if(nameRegex.test(name.value) == false)
+        {
+            document.querySelector(".nameerror").style.display="inline"
+            validate = false
+        }
+        else{
+            document.querySelector(".nameerror").style.display="none"
+
+        }   
+        
+        if(emailRegex.test(email.value) == false)
+        {
+            document.querySelector(".emailerror").style.display="inline"
+            validate = false
+        }
+        else{
+            document.querySelector(".emailerror").style.display="none"
+
+        }  
+        
+        if(numberRegex.test(number.value) == false)
+        {
+            document.querySelector(".numbererror").style.display="inline"
+            validate = false
+        }
+        else{
+            document.querySelector(".numbererror").style.display="none"
+
+        }  
+        
+        if(validate == true)
+        {
+            alert("form Submitted successfully")
+        }
+        
+    })
+    
+</script>
+</body>
